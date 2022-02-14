@@ -1,35 +1,71 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:the_empire/app_properties.dart';
 import 'package:the_empire/custom_appbar.dart';
 import 'package:the_empire/screens/Authentication/components/google_button.dart';
-import 'package:the_empire/screens/Authentication/signup_screen.dart';
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({ Key? key }) : super(key: key);
 
-class LoginScreen extends StatefulWidget {
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
-
-  TextEditingController email = TextEditingController();
-
-  TextEditingController password = TextEditingController();
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
+  TextEditingController fullName = TextEditingController();
+  TextEditingController phoneNo = TextEditingController();
+
+  
+  TextEditingController bankAccount = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    Widget loginForm = Container(
-      height: height * 0.22,
+    Widget signupForm = Container(
+      height: height * 0.42,
       child: Container(
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 8.0),
+              padding:  EdgeInsets.only(top: height * 0.009),
               child: TextField(
-                controller: widget.email,
+                controller: fullName,
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.person),
+                  hintText: 'Full Name.',
+                ),
+                style: const TextStyle(fontSize: 16.0, fontFamily: 'Rubik'),
+              ),
+            ),
+            Padding(
+              padding:  EdgeInsets.only(top: height * 0.009),
+              child: TextField(
+                controller: phoneNo,
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.phone),
+                  hintText: 'Phone No.',
+                ),
+                style: const TextStyle(fontSize: 16.0, fontFamily: 'Rubik'),
+              ),
+            ),
+
+            Padding(
+              padding:  EdgeInsets.only(top: height * 0.009),
+              child: TextField(
+                controller: bankAccount,
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.account_balance),
+                  hintText: 'Bank Account.',
+                ),
+                style: const TextStyle(fontSize: 16.0, fontFamily: 'Rubik'),
+              ),
+            ),
+            Padding(
+              padding:  EdgeInsets.only(top: height * 0.009),
+              child: TextField(
+                controller: email,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email),
                   hintText: 'Email ID/Phone No.',
@@ -38,9 +74,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 8.0),
+              padding:  EdgeInsets.only(top: height * 0.009),
               child: TextField(
-                controller: widget.password,
+                controller: password,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.lock),
                   hintText: 'Password.',
@@ -53,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-    Widget loginButton = InkWell(
+    Widget signUpButton = InkWell(
       onTap: () {
         // Navigator.of(context)
         //     .push(MaterialPageRoute(builder: (_) => SignUpScreen()));
@@ -62,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
         width: MediaQuery.of(context).size.width / 1.5,
         height: height * 0.07,
         child: const Center(
-            child: Text("Login",
+            child: Text("Signup",
                 style: TextStyle(
                     color: backgroundColor,
                     fontFamily: 'Rubik',
@@ -73,30 +109,6 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-
-    Widget register = GestureDetector(
-      onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (_) => SignUpScreen()));
-      },
-      child: const Text.rich(
-        TextSpan(
-          text: "New to the Empire? ",
-          children: [
-            TextSpan(
-              text: "Register",
-              style: TextStyle(
-                  fontFamily: 'Rubik-Meduim', fontSize: 18, color: brown),
-            ),
-          ],
-        ),
-        style: TextStyle(
-          fontSize: 18,
-          fontFamily: 'Rubik-Regular',
-          color: Colors.black,
-        ),
-      ),
-    );
     return Scaffold(
       backgroundColor: backgroundColor,
       resizeToAvoidBottomInset: false,
@@ -104,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomAppbar(title: "Login",),
+            CustomAppbar(title: "SignUp",),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(left: 28.0, right: 28.0),
@@ -113,12 +125,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Spacer(
                       flex: 4,
                     ),
-                    loginForm,
-                    loginButton,
+                    const GoogleButton(),
+                    // loginForm,
+                    // loginButton,
                     const Spacer(
                       flex: 1,
                     ),
-                    const Text('or, login with',
+                    const Text('or, signup with email',
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.normal,
@@ -127,24 +140,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Spacer(
                       flex: 1,
                     ),
-                    GoogleButton(),
+                    signupForm,
                     const Spacer(
                       flex: 1,
                     ),
-                    InkWell(
-                      onTap: () {},
-                      child: const Text(
-                        'Forgot Password?',
-                        style: TextStyle(
-                            color: brown,
-                            fontFamily: 'Rubik-Medium',
-                            fontSize: 18.0),
-                      ),
-                    ),
+                    signUpButton,
                     const Spacer(
                       flex: 1,
                     ),
-                    register,
+                    // register,
                     const Spacer(
                       flex: 3,
                     )

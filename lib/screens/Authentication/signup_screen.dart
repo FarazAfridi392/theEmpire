@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:the_empire/app_properties.dart';
 import 'package:the_empire/custom_appbar.dart';
 import 'package:the_empire/screens/Authentication/components/google_button.dart';
+import 'package:the_empire/screens/Authentication/login_screen.dart';
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({ Key? key }) : super(key: key);
 
@@ -91,8 +92,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
     Widget signUpButton = InkWell(
       onTap: () {
-        // Navigator.of(context)
-        //     .push(MaterialPageRoute(builder: (_) => SignUpScreen()));
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => LoginScreen()));
       },
       child: Container(
         width: MediaQuery.of(context).size.width / 1.5,

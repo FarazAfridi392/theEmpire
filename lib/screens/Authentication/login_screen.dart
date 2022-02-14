@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:the_empire/app_properties.dart';
 import 'package:the_empire/custom_appbar.dart';
 import 'package:the_empire/screens/Authentication/components/google_button.dart';
+import 'package:the_empire/screens/Authentication/forgot_password_screen.dart';
 import 'package:the_empire/screens/Authentication/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -104,7 +105,9 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomAppbar(title: "Login",),
+            CustomAppbar(
+              title: "Login",
+            ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(left: 28.0, right: 28.0),
@@ -132,7 +135,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       flex: 1,
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => ForgotPasswordScreen()));
+                      },
                       child: const Text(
                         'Forgot Password?',
                         style: TextStyle(

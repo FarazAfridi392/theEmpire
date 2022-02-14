@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_empire/app_properties.dart';
+import 'package:the_empire/screens/Main/main.dart';
 class GoogleButton extends StatelessWidget {
   const GoogleButton();
 
@@ -9,8 +10,8 @@ class GoogleButton extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return InkWell(
       onTap: () {
-        // Navigator.of(context)
-        //     .push(MaterialPageRoute(builder: (_) => RegisterPage()));
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => Main()));
       },
       child: Container(
         width: width / 1.5,

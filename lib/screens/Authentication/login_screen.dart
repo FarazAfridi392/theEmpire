@@ -5,6 +5,7 @@ import 'package:the_empire/custom_appbar.dart';
 import 'package:the_empire/screens/Authentication/components/google_button.dart';
 import 'package:the_empire/screens/Authentication/forgot_password_screen.dart';
 import 'package:the_empire/screens/Authentication/signup_screen.dart';
+import 'package:the_empire/screens/Main/main.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -56,8 +57,9 @@ class _LoginScreenState extends State<LoginScreen> {
     );
     Widget loginButton = InkWell(
       onTap: () {
-        // Navigator.of(context)
-        //     .push(MaterialPageRoute(builder: (_) => SignUpScreen()));
+        
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => Main()));
       },
       child: Container(
         width: MediaQuery.of(context).size.width / 1.5,

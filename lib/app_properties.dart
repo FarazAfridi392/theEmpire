@@ -6,6 +6,9 @@ const Color mediumBrown = Color(0xff9F9165);
 const Color darkBrown = Color(0xff93875D);
 const Color darkGrey = Color(0xff808B9E);
 const Color borderColor = Color(0xff808B9E);
+const Color sendColor = Color(0xffF36C72);
+const Color receivedColor = Color(0xff49D18E);
+const Color  transparentWhite = Color.fromARGB(0, 15, 255, 255);
 
 
 const LinearGradient mainButton = LinearGradient(colors: [

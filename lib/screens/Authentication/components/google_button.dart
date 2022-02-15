@@ -11,7 +11,7 @@ class GoogleButton extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (_) => Main()));
+            .pushReplacement(MaterialPageRoute(builder: (_) => Main()));
       },
       child: Container(
         width: width / 1.5,

@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
       onTap: () {
         
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (_) => Main()));
+            .pushReplacement(MaterialPageRoute(builder: (_) => Main()));
       },
       child: Container(
         width: MediaQuery.of(context).size.width / 1.5,

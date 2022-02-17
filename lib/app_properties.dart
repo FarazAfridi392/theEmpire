@@ -8,7 +8,17 @@ const Color darkGrey = Color(0xff808B9E);
 const Color borderColor = Color(0xff808B9E);
 const Color sendColor = Color(0xffF36C72);
 const Color receivedColor = Color(0xff49D18E);
-const Color  transparentWhite = Color.fromARGB(0, 15, 255, 255);
+const Color visaCardColor = Color(0xff4C6FFF);
+const Color paypalColor = Color(0xff013187);
+const Color lightBlack = Color(0xff4A4956);
+const Color lightRed = Color(0xffF29C47);
+const Color lightGreen = Color.fromARGB(24, 41, 191, 119);
+const Color darkpurple = Color(0xff480F6D);
+const Color purple = Color.fromARGB(100, 72, 15, 109);
+const Color lightOrange = Color.fromARGB(33, 242, 156, 71);
+
+
+const Color  transparentWhite = Color(0xffFFFFFF);
 
 
 const LinearGradient mainButton = LinearGradient(colors: [

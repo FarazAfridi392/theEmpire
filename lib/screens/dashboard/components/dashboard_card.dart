@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:the_empire/app_properties.dart';
+import 'package:the_empire/screens/authentication/login_screen.dart';
 
 class DashboardCard extends StatefulWidget {
   double width;
@@ -76,10 +77,13 @@ class _DashboardCardState extends State<DashboardCard> {
                       width: widget.width * 0.025,
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        // Navigator.of(context).push(
+                        //     MaterialPageRoute(builder: (_) => LoginScreen()));
+                      },
                       child: Container(
-                        padding: EdgeInsets.all(2),
-                        decoration: BoxDecoration(
+                        padding: const EdgeInsets.all(2),
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: brown,
                         ),

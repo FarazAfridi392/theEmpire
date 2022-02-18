@@ -79,7 +79,11 @@ flutter:
       fonts:
         - asset: fonts/Rubik-Regular.ttf
         - asset: fonts/Rubik-Bold.ttf
-        - asset: fonts/Rubik-Medium.ttf          
+        - asset: fonts/Rubik-Medium.ttf   
+    - family: Rubik
+      fonts:
+        - asset: fonts/Roboto-Regular.ttf
+        - asset: fonts/Roboto-Bold.ttf       
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:the_empire/app_properties.dart';
 import 'package:the_empire/screens/authentication/login_screen.dart';
+import 'package:the_empire/screens/profile_screen.dart';
 
 class DashboardCard extends StatefulWidget {
   double width;
   double height;
-  DashboardCard({required this.width, required this.height, Key? key})
+  final navigatorkey;
+  DashboardCard({required this.width, required this.height,this.navigatorkey, Key? key})
       : super(key: key);
 
   @override
@@ -78,8 +80,8 @@ class _DashboardCardState extends State<DashboardCard> {
                     ),
                     InkWell(
                       onTap: () {
-                        // Navigator.of(context).push(
-                        //     MaterialPageRoute(builder: (_) => LoginScreen()));
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (_) => ProfileScreen()));
                       },
                       child: Container(
                         padding: const EdgeInsets.all(2),

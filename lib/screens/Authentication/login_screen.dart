@@ -11,6 +11,9 @@ class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 
+  final navigatorKey;
+  LoginScreen({this.navigatorKey});
+
   TextEditingController email = TextEditingController();
 
   TextEditingController password = TextEditingController();
@@ -57,7 +60,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
     Widget loginButton = InkWell(
       onTap: () {
-        
         Navigator.of(context)
             .pushReplacement(MaterialPageRoute(builder: (_) => MainPage()));
       },
@@ -101,68 +103,69 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
     return Scaffold(
-      backgroundColor: backgroundColor,
-      resizeToAvoidBottomInset: false,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CustomAppbar(
-              title: "Login",
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 28.0, right: 28.0),
+              backgroundColor: backgroundColor,
+              resizeToAvoidBottomInset: false,
+              body: Center(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Spacer(
-                      flex: 4,
+                    CustomAppbar(
+                      title: "Login",
                     ),
-                    loginForm,
-                    loginButton,
-                    const Spacer(
-                      flex: 1,
-                    ),
-                    const Text('or, login with',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.normal,
-                            fontFamily: 'Rubik-Regular',
-                            fontSize: 16.0)),
-                    const Spacer(
-                      flex: 1,
-                    ),
-                    GoogleButton(),
-                    const Spacer(
-                      flex: 1,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => ForgotPasswordScreen()));
-                      },
-                      child: const Text(
-                        'Forgot Password?',
-                        style: TextStyle(
-                            color: brown,
-                            fontFamily: 'Rubik-Medium',
-                            fontSize: 18.0),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 28.0, right: 28.0),
+                        child: Column(
+                          children: [
+                            const Spacer(
+                              flex: 4,
+                            ),
+                            loginForm,
+                            loginButton,
+                            const Spacer(
+                              flex: 1,
+                            ),
+                            const Text('or, login with',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.normal,
+                                    fontFamily: 'Rubik-Regular',
+                                    fontSize: 16.0)),
+                            const Spacer(
+                              flex: 1,
+                            ),
+                            GoogleButton(),
+                            const Spacer(
+                              flex: 1,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (_) => ForgotPasswordScreen()));
+                              },
+                              child: const Text(
+                                'Forgot Password?',
+                                style: TextStyle(
+                                    color: brown,
+                                    fontFamily: 'Rubik-Medium',
+                                    fontSize: 18.0),
+                              ),
+                            ),
+                            const Spacer(
+                              flex: 1,
+                            ),
+                            register,
+                            const Spacer(
+                              flex: 3,
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    const Spacer(
-                      flex: 1,
-                    ),
-                    register,
-                    const Spacer(
-                      flex: 3,
                     )
                   ],
                 ),
               ),
-            )
-          ],
-        ),
-      ),
-    );
+            );
+          
   }
 }

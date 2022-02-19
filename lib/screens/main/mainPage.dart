@@ -17,25 +17,6 @@ class _MyAppState extends State<MainPage>
 
   late List<Widget> _pages;
 
-  List<BottomNavigationBarItem> _items = [
-    BottomNavigationBarItem(
-      icon: Icon(Icons.home),
-      label: "Home",
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.messenger_rounded),
-      label: "Messages",
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.settings),
-      label: "Settings",
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.settings),
-      label: "Settings",
-    ),
-  ];
-
   late int _selectedPage;
 
   @override
@@ -50,7 +31,6 @@ class _MyAppState extends State<MainPage>
     //   PaymentMethodScreen(),
     //   TransactionHistoryScreen(),
     // ];
-    
   }
 
   @override
@@ -63,6 +43,7 @@ class _MyAppState extends State<MainPage>
           );
         },
         child: IndexedStack(
+          
           index: _selectedPage,
           children: [
             TabBarView(
@@ -78,7 +59,6 @@ class _MyAppState extends State<MainPage>
         ),
       ),
       bottomNavigationBar: CustomBottomBar(
-        
         controller: bottomTabController,
       ),
     );

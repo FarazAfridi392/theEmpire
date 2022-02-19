@@ -62,6 +62,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final f = DateFormat('hh:mm a');
     return Navigator(
         key: widget.navigatorKey,
+        
         onGenerateRoute: (RouteSettings settings) {
           return MaterialPageRoute(builder: (BuildContext context) {
             return Scaffold(

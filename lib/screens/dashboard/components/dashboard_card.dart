@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:the_empire/app_properties.dart';
+import 'package:the_empire/screens/add_cash_screen.dart';
 import 'package:the_empire/screens/authentication/login_screen.dart';
+import 'package:the_empire/screens/cash_out_screen.dart';
 import 'package:the_empire/screens/profile_screen.dart';
 
 class DashboardCard extends StatefulWidget {
   double width;
   double height;
   final navigatorkey;
-  DashboardCard({required this.width, required this.height,this.navigatorkey, Key? key})
+  DashboardCard(
+      {required this.width, required this.height, this.navigatorkey, Key? key})
       : super(key: key);
 
   @override
@@ -153,34 +156,54 @@ class _DashboardCardState extends State<DashboardCard> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: widget.width * 0.3,
-                  height: widget.height * 0.04,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20), color: brown),
-                  child: Center(
-                    child: Text(
-                      'Add Cash',
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                        fontFamily: 'Rubik-Regular',
-                        color: backgroundColor,
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => AddCashScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: widget.width * 0.3,
+                    height: widget.height * 0.04,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20), color: brown),
+                    child: Center(
+                      child: Text(
+                        'Add Cash',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontFamily: 'Rubik-Regular',
+                          color: backgroundColor,
+                        ),
                       ),
                     ),
                   ),
                 ),
-                Container(
-                  width: widget.width * 0.3,
-                  height: widget.height * 0.04,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20), color: brown),
-                  child: Center(
-                    child: Text(
-                      'Cash Out',
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                        fontFamily: 'Rubik-Regular',
-                        color: backgroundColor,
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => CashOutScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: widget.width * 0.3,
+                    height: widget.height * 0.04,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20), color: brown),
+                    child: Center(
+                      child: Text(
+                        'Cash Out',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontFamily: 'Rubik-Regular',
+                          color: backgroundColor,
+                        ),
                       ),
                     ),
                   ),

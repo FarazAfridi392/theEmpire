@@ -91,7 +91,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             child: DashboardCard(
                               width: width,
                               height: height,
-                              navigatorkey: widget.navigatorKey,
+                              // navigatorkey: widget.navigatorKey,
                             ),
                           ),
                           Positioned(

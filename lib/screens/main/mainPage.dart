@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import 'package:the_empire/app_properties.dart';
 import 'package:the_empire/screens/Dashboard/dashboard_screen.dart';
 import 'package:the_empire/screens/Main/components/custom_bottomBar.dart';
@@ -22,19 +23,15 @@ class _MyAppState extends State<MainPage>
   @override
   void initState() {
     super.initState();
-    bottomTabController = TabController(length: 4, vsync: this);
     _selectedPage = 0;
 
-    // _pages = [
-    //   DashboardScreen(navigatorKey: MyKeys.getKeys().elementAt(0)),
-    //   MoneyTransferScreen(),
-    //   PaymentMethodScreen(),
-    //   TransactionHistoryScreen(),
-    // ];
+    bottomTabController = TabController(length: 4, vsync: this);
   }
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    print(_selectedPage);
     return Scaffold(
       body: WillPopScope(
         onWillPop: () async {
@@ -43,100 +40,110 @@ class _MyAppState extends State<MainPage>
           );
         },
         child: IndexedStack(
-          
           index: _selectedPage,
           children: [
-            TabBarView(
-              controller: bottomTabController,
-              children: [
-                DashboardScreen(navigatorKey: MyKeys.getKeys().elementAt(0)),
-                MoneyTransferScreen(),
-                PaymentMethodScreen(),
-                TransactionHistoryScreen(),
-              ],
+            DashboardScreen(
+              navigatorKey: MyKeys.getKeys().elementAt(0),
+            ),
+            MoneyTransferScreen(
+              navigatorKey: MyKeys.getKeys().elementAt(1),
+            ),
+            PaymentMethodScreen(
+              navigatorKey: MyKeys.getKeys().elementAt(2),
+            ),
+            TransactionHistoryScreen(
+              navigatorKey: MyKeys.getKeys().elementAt(3),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomBar(
-        controller: bottomTabController,
-      ),
-    );
-  }
-}
-
-class MyPage extends StatelessWidget {
-  MyPage(this.count, this.text, this.navigatorKey);
-  final count;
-  final text;
-  final navigatorKey;
-  @override
-  Widget build(BuildContext context) {
-    // You'll see that it will only print once
-    print("Building $text with count: $count");
-    return Navigator(
-      key: navigatorKey,
-      onGenerateRoute: (RouteSettings settings) {
-        return MaterialPageRoute(
-          builder: (BuildContext context) {
-            return Scaffold(
-              appBar: AppBar(
-                title: Text(this.text),
-              ),
-              body: Center(
-                child: RaisedButton(
-                  child: Text(this.count.toString()),
+      bottomNavigationBar: BottomAppBar(
+        color: brown,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Container(
+              height: screenHeight * 0.08,
+              child: FittedBox(
+                child: IconButton(
+                  color: bottomTabController.index == 0
+                      ? Colors.white
+                      : Colors.white70,
+                  iconSize: 25.sp,
+                  icon: const Icon(Icons.home),
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (ctx) => MyCustomPage(count + 1, text)));
+                    setState(() {
+                      bottomTabController.index = 0;
+                      _selectedPage = bottomTabController.index;
+                    });
+
+                    bottomTabController.animateTo(0);
                   },
                 ),
               ),
-            );
-          },
-        );
-      },
-    );
-  }
-}
-
-class MyCustomPage extends StatelessWidget {
-  MyCustomPage(this.count, this.text);
-  final count;
-  final text;
-  @override
-  Widget build(BuildContext parentContext) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(this.text),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Container(
-              child: ListView.builder(
-                itemCount: 15,
-                itemBuilder: (context, index) {
-                  return Container(
-                    width: double.infinity,
-                    child: Card(
-                      child: Center(
-                        child: RaisedButton(
-                          child: Text(this.count.toString() + " pos($index)"),
-                          onPressed: () {
-                            Navigator.of(parentContext).push(MaterialPageRoute(
-                                builder: (ctx) =>
-                                    MyCustomPage(count + 1, text)));
-                          },
-                        ),
-                      ),
-                    ),
-                  );
-                },
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: 3.sp),
+              height: screenHeight * 0.08,
+              child: FittedBox(
+                child: IconButton(
+                  color: bottomTabController.index == 1
+                      ? Colors.white
+                      : Colors.white70,
+                  iconSize: 25.sp,
+                  icon: Icon(Icons.sync_alt),
+                  onPressed: () {
+                    setState(() {
+                      bottomTabController.index = 1;
+                      _selectedPage = bottomTabController.index;
+                    });
+                    bottomTabController.animateTo(1);
+                  },
+                ),
               ),
             ),
-          ),
-        ],
+            Container(
+              margin: EdgeInsets.only(bottom: 3.sp),
+              height: screenHeight * 0.08,
+              child: FittedBox(
+                child: IconButton(
+                  color: bottomTabController.index == 2
+                      ? Colors.white
+                      : Colors.white70,
+                  iconSize: 25.sp,
+                  icon: const Icon(Icons.payment),
+                  onPressed: () {
+                    setState(() {
+                      bottomTabController.index = 2;
+                      _selectedPage = bottomTabController.index;
+                    });
+                    bottomTabController.animateTo(2);
+                  },
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: 3.sp),
+              height: screenHeight * 0.08,
+              child: FittedBox(
+                child: IconButton(
+                  color: bottomTabController.index == 3
+                      ? Colors.white
+                      : Colors.white70,
+                  iconSize: 25.sp,
+                  icon: const Icon(Icons.history),
+                  onPressed: () {
+                    setState(() {
+                      bottomTabController.index = 3;
+                      _selectedPage = bottomTabController.index;
+                    });
+                    bottomTabController.animateTo(3);
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -146,8 +153,9 @@ class MyKeys {
   static final first = GlobalKey(debugLabel: 'page1');
   static final second = GlobalKey(debugLabel: 'page2');
   static final third = GlobalKey(debugLabel: 'page3');
+  static final fourth = GlobalKey(debugLabel: 'page4');
 
-  static List<GlobalKey> getKeys() => [first, second, third];
+  static List<GlobalKey> getKeys() => [first, second, third, fourth];
 }
 
 // class MainPage extends StatefulWidget {

@@ -25,6 +25,10 @@ class _AddCashScreenState extends State<AddCashScreen> {
     double width = MediaQuery.of(context).size.width;
     Widget addCashButton = InkWell(
       onTap: () {
+        
+        if(text.length == 0){
+          return;
+        }
         Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (_) => CompleteMessageScreen(
                   text1: 'Amount Added',
@@ -141,6 +145,9 @@ class _AddCashScreenState extends State<AddCashScreen> {
             textColor: grey,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             rightButtonFn: () {
+              if (text.contains('.') || text.length == 0) {
+                return;
+              }
               setState(() {
                 text = text + '.';
               });

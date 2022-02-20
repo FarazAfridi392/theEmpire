@@ -7,7 +7,8 @@ import 'package:the_empire/screens/transaction_history/components/received_trans
 import 'package:the_empire/screens/transaction_history/components/sent_transactions.dart';
 
 class TransactionHistoryScreen extends StatefulWidget {
-  const TransactionHistoryScreen({Key? key}) : super(key: key);
+  final navigatorKey;
+   TransactionHistoryScreen({this.navigatorKey, Key? key}) : super(key: key);
 
   @override
   _TransactionHistoryScreenState createState() =>
@@ -19,7 +20,11 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return Column(
+    return Navigator(
+        key: widget.navigatorKey,
+        
+        onGenerateRoute: (RouteSettings settings) {
+          return MaterialPageRoute(builder: (BuildContext context) {return Column(
       children: [
         CustomAppbar(
           title: 'Transaction History',
@@ -161,6 +166,6 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
               )),
         )
       ],
-    );
+    );},);},);
   }
 }

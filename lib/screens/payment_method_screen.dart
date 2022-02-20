@@ -5,9 +5,11 @@ import 'package:the_empire/custom_appbar.dart';
 import 'package:the_empire/screens/money_transfer/components/master_card.dart';
 import 'package:the_empire/screens/money_transfer/components/paypal_card.dart';
 import 'package:the_empire/screens/money_transfer/components/visa_card.dart';
+import 'package:the_empire/screens/notifications_screen.dart';
 
 class PaymentMethodScreen extends StatefulWidget {
-  const PaymentMethodScreen({Key? key}) : super(key: key);
+  final navigatorKey;
+   PaymentMethodScreen({this.navigatorKey, Key? key}) : super(key: key);
 
   @override
   _PaymentMethodScreenState createState() => _PaymentMethodScreenState();
@@ -20,8 +22,8 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
     double width = MediaQuery.of(context).size.width;
     Widget updateButton = InkWell(
       onTap: () {
-        // Navigator.of(context)
-        //     .pushReplacement(MaterialPageRoute(builder: (_) => Main()));
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => NotificationScreen()));
       },
       child: Container(
         width: MediaQuery.of(context).size.width / 1.5,
@@ -38,147 +40,155 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
         ),
       ),
     );
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      body: Column(
-        children: [
-          CustomAppbar(
-            title: 'Payment Methods',
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(
-                left: width * 0.06,
-                right: width * 0.12,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+    return Navigator(
+      key: widget.navigatorKey,
+      onGenerateRoute: (RouteSettings settings) {
+        return MaterialPageRoute(
+          builder: (BuildContext context) {
+            return Scaffold(
+              backgroundColor: backgroundColor,
+              body: Column(
                 children: [
-                  const Spacer(
-                    flex: 6,
+                  CustomAppbar(
+                    title: 'Payment Methods',
                   ),
-                  Row(
-                    children: [
-                      VisaCard(height: height, width: width),
-                      SizedBox(
-                        width: width * 0.06,
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        left: width * 0.06,
+                        right: width * 0.12,
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(
-                            "Visa: 4321",
-                            style: TextStyle(
-                                color: lightBlack,
-                                fontFamily: 'Rubik-Regular',
-                                fontSize: 11.sp),
+                          const Spacer(
+                            flex: 6,
+                          ),
+                          Row(
+                            children: [
+                              VisaCard(height: height, width: width),
+                              SizedBox(
+                                width: width * 0.06,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Visa: 4321",
+                                    style: TextStyle(
+                                        color: lightBlack,
+                                        fontFamily: 'Rubik-Regular',
+                                        fontSize: 11.sp),
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.01,
+                                  ),
+                                  Text(
+                                    "Exp. Date: 12/25",
+                                    style: TextStyle(
+                                        color: lightBlack,
+                                        fontFamily: 'Rubik-Regular',
+                                        fontSize: 11.sp),
+                                  ),
+                                ],
+                              )
+                            ],
                           ),
                           SizedBox(
-                            height: height * 0.01,
+                            height: height * 0.02,
                           ),
-                          Text(
-                            "Exp. Date: 12/25",
-                            style: TextStyle(
-                                color: lightBlack,
-                                fontFamily: 'Rubik-Regular',
-                                fontSize: 11.sp),
+                          const Divider(
+                            color: darkGrey,
+                            thickness: 1.5,
                           ),
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: height * 0.02,
-                  ),
-                  const Divider(
-                    color: darkGrey,
-                    thickness: 1.5,
-                  ),
-                  const Spacer(
-                    flex: 1,
-                  ),
-                  Row(
-                    children: [
-                      MasterCard(height: height, width: width),
-                      SizedBox(
-                        width: width * 0.06,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Mastercard: 5432",
-                            style: TextStyle(
-                                color: lightBlack,
-                                fontFamily: 'Rubik-Regular',
-                                fontSize: 11.sp),
+                          const Spacer(
+                            flex: 1,
                           ),
-                          SizedBox(
-                            height: height * 0.01,
-                          ),
-                          Text(
-                            "Exp. Date: 12/25",
-                            style: TextStyle(
-                                color: lightBlack,
-                                fontFamily: 'Rubik-Regular',
-                                fontSize: 11.sp),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: height * 0.02,
-                  ),
-                  const Divider(
-                    color: darkGrey,
-                    thickness: 1.5,
-                  ),
-                  const Spacer(
-                    flex: 1,
-                  ),
-                  Row(
-                    children: [
-                      PaypalCard(height: height, width: width),
-                      SizedBox(
-                        width: width * 0.06,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "PayPal ID",
-                            style: TextStyle(
-                                color: lightBlack,
-                                fontFamily: 'Rubik-Regular',
-                                fontSize: 11.sp),
+                          Row(
+                            children: [
+                              MasterCard(height: height, width: width),
+                              SizedBox(
+                                width: width * 0.06,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Mastercard: 5432",
+                                    style: TextStyle(
+                                        color: lightBlack,
+                                        fontFamily: 'Rubik-Regular',
+                                        fontSize: 11.sp),
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.01,
+                                  ),
+                                  Text(
+                                    "Exp. Date: 12/25",
+                                    style: TextStyle(
+                                        color: lightBlack,
+                                        fontFamily: 'Rubik-Regular',
+                                        fontSize: 11.sp),
+                                  ),
+                                ],
+                              )
+                            ],
                           ),
                           SizedBox(
-                            height: height * 0.01,
+                            height: height * 0.02,
                           ),
-                          Text(
-                            'Abcd@gmail.com',
-                            style: TextStyle(
-                                color: lightBlack,
-                                fontFamily: 'Rubik-Regular',
-                                fontSize: 11.sp),
+                          const Divider(
+                            color: darkGrey,
+                            thickness: 1.5,
+                          ),
+                          const Spacer(
+                            flex: 1,
+                          ),
+                          Row(
+                            children: [
+                              PaypalCard(height: height, width: width),
+                              SizedBox(
+                                width: width * 0.06,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "PayPal ID",
+                                    style: TextStyle(
+                                        color: lightBlack,
+                                        fontFamily: 'Rubik-Regular',
+                                        fontSize: 11.sp),
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.01,
+                                  ),
+                                  Text(
+                                    'Abcd@gmail.com',
+                                    style: TextStyle(
+                                        color: lightBlack,
+                                        fontFamily: 'Rubik-Regular',
+                                        fontSize: 11.sp),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                          const Spacer(flex: 3),
+                          Center(child: updateButton),
+                          const Spacer(
+                            flex: 6,
                           ),
                         ],
-                      )
-                    ],
-                  ),
-                  const Spacer(flex:3),
-                  Center(child: updateButton),
-                  
-                  const Spacer(
-                    flex: 6,
-                  ),
+                      ),
+                    ),
+                  )
                 ],
               ),
-            ),
-          )
-        ],
-      ),
+            );
+          },
+        );
+      },
     );
   }
 }

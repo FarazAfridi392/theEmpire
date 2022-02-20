@@ -4,6 +4,7 @@ import 'package:the_empire/app_properties.dart';
 import 'package:the_empire/screens/add_cash_screen.dart';
 import 'package:the_empire/screens/authentication/login_screen.dart';
 import 'package:the_empire/screens/cash_out_screen.dart';
+import 'package:the_empire/screens/notifications_screen.dart';
 import 'package:the_empire/screens/profile_screen.dart';
 
 class DashboardCard extends StatefulWidget {
@@ -71,7 +72,10 @@ class _DashboardCardState extends State<DashboardCard> {
                 Row(
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (_) => NotificationScreen()));
+                      },
                       child: Icon(
                         Icons.notifications,
                         color: brown,

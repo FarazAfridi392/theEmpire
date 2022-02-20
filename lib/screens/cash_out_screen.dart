@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
 import 'package:sizer/sizer.dart';
 import 'package:the_empire/app_properties.dart';
+import 'package:the_empire/screens/complete_message_screen.dart';
 
 class CashOutScreen extends StatefulWidget {
   const CashOutScreen({Key? key}) : super(key: key);
@@ -16,10 +17,19 @@ class _CashOutScreenState extends State<CashOutScreen> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    Widget addCashButton = InkWell(
+    Widget cashOutButton = InkWell(
       onTap: () {
-        // Navigator.of(context)
-        //     .pushReplacement(MaterialPageRoute(builder: (_) => Main()));
+        if (text.length == 0) {
+          return;
+        }
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (_) => CompleteMessageScreen(
+              text1: 'Amount Withdrawn',
+              text2: text,
+            ),
+          ),
+        );
       },
       child: Container(
         width: MediaQuery.of(context).size.width / 1.5,
@@ -89,7 +99,6 @@ class _CashOutScreenState extends State<CashOutScreen> {
                                 text: "\$ ",
                                 style: TextStyle(
                                   fontSize: 12.sp,
-                                  
                                   fontFamily: 'Rubik',
                                   color: Colors.black,
                                 ),
@@ -99,7 +108,6 @@ class _CashOutScreenState extends State<CashOutScreen> {
                                     style: TextStyle(
                                       fontSize: 25.sp,
                                       fontWeight: FontWeight.w400,
-                                      
                                       fontFamily: 'Rubik',
                                       color: Colors.black,
                                     ),
@@ -133,6 +141,9 @@ class _CashOutScreenState extends State<CashOutScreen> {
             textColor: grey,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             rightButtonFn: () {
+              if (text.contains('.') || text.length == 0) {
+                return;
+              }
               setState(() {
                 text = text + '.';
               });
@@ -144,7 +155,7 @@ class _CashOutScreenState extends State<CashOutScreen> {
             ),
             leftButtonFn: () {
               setState(() {
-                if(text.length == 0){
+                if (text.length == 0) {
                   return;
                 }
                 text = text.substring(0, text.length - 1);
@@ -159,19 +170,18 @@ class _CashOutScreenState extends State<CashOutScreen> {
             height: height * 0.03,
           ),
 
-          Center(child: addCashButton),
+          Center(child: cashOutButton),
           SizedBox(
             height: height * 0.03,
           )
         ],
       ),
     );
-    
   }
+
   _onKeyboardTap(String value) {
     setState(() {
       text = text + value;
     });
-
   }
 }

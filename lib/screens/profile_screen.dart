@@ -75,7 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       'Augusta F  ',
                       style: TextStyle(
                           color: lightBlack,
-                          fontSize: 20.sp,
+                          fontSize: 17.sp,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Rubik'),
                     ),

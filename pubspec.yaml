@@ -81,7 +81,7 @@ flutter:
         - asset: fonts/Rubik-Regular.ttf
         - asset: fonts/Rubik-Bold.ttf
         - asset: fonts/Rubik-Medium.ttf   
-    - family: Rubik
+    - family: Roboto
       fonts:
         - asset: fonts/Roboto-Regular.ttf
         - asset: fonts/Roboto-Bold.ttf       

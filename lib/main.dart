@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:the_empire/screens/splash_screen.dart';
 
-
-
 // void main() {
 //   runApp(MaterialApp(
 //     home: MyApp(),
@@ -190,25 +188,10 @@ import 'package:the_empire/screens/splash_screen.dart';
 //   static List<GlobalKey> getKeys() => [first, second, third];
 // }
 
-
 void main() {
-  runApp(const MyApp());
+  runApp( MyHomePage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
 
 class MyHomePage extends StatefulWidget {
   @override

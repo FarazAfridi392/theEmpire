@@ -3,6 +3,8 @@ import 'package:sizer/sizer.dart';
 import 'package:the_empire/app_properties.dart';
 import 'package:the_empire/custom_appbar.dart';
 import 'package:the_empire/screens/money_transfer/components/cards_box.dart';
+import 'package:the_empire/screens/money_transfer/send_money_screen/money_transfer_option_screen.dart';
+import 'package:the_empire/screens/money_transfer/send_or_request_screen.dart';
 import 'package:the_empire/screens/notifications_screen.dart';
 
 class MoneyTransferScreen extends StatefulWidget {
@@ -45,6 +47,7 @@ class _MoneyTransferScreenState extends State<MoneyTransferScreen> {
         return MaterialPageRoute(
           builder: (BuildContext context) {
             return Scaffold(
+              resizeToAvoidBottomInset: false,
               backgroundColor: backgroundColor,
               body: Center(
                 child: Column(
@@ -71,7 +74,7 @@ class _MoneyTransferScreenState extends State<MoneyTransferScreen> {
                     InkWell(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => NotificationScreen()));
+                            builder: (_) => SendOrRequestScreen()));
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width / 1.5,
@@ -113,7 +116,7 @@ class _MoneyTransferScreenState extends State<MoneyTransferScreen> {
                             SizedBox(
                               width: width * 0.03,
                             ),
-                            Icon(
+                            const Icon(
                               Icons.qr_code_scanner,
                               color: lightBlack,
                             )

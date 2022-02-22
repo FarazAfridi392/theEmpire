@@ -121,7 +121,7 @@ class _CashOutScreenState extends State<CashOutScreen> {
                 ),
                 Positioned(
                   top: height * .05,
-                  left: 90.sp,
+                  
                   child: Text(
                     'Cash Out',
                     style: TextStyle(

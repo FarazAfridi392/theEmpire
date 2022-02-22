@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:the_empire/app_properties.dart';
 import 'package:the_empire/custom_appbar.dart';
@@ -15,6 +16,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
+    Widget dismisButton = Align(
+      alignment: Alignment.topRight,
+      child: SizedBox(
+          height: height * 0.03,
+          width: width * 0.06,
+          child: Padding(
+            padding: EdgeInsets.only(left: width * 0.03, top: 0),
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context, rootNavigator: true).pop('dialog');
+              },
+              child: Text(
+                'x',
+                style: TextStyle(
+                    color: darkGrey,
+                    fontFamily: 'Rubik',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.sp),
+              ),
+            ),
+          )),
+    );
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -124,32 +148,71 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                            height: height * 0.05,
-                            width: width * 0.3,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                border:
-                                    Border.all(color: lightBlack, width: 1)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'My QR',
-                                  style: TextStyle(
-                                      fontFamily: 'Roboto',
-                                      fontSize: 10.sp,
-                                      color: lightBlack),
-                                ),
-                                SizedBox(
-                                  width: width * 0.02,
-                                ),
-                                Icon(
-                                  Icons.qr_code,
-                                  color: lightBlack,
-                                  size: 16.sp,
-                                )
-                              ],
+                          InkWell(
+                            onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (_) {
+                                    return AlertDialog(
+                                      actionsPadding: EdgeInsets.zero,
+                                      elevation: 4,
+                                      content: Container(
+                                        height: height * 0.35,
+                                        width: width * 0.8,
+                                        alignment: Alignment.topCenter,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            dismisButton,
+                                            Expanded(
+                                              child: QrImage(
+                                                data:
+                                                    'This QR code has an embedded image as well',
+                                                version: QrVersions.auto,
+                                                gapless: false,
+                                              ),
+                                            ),
+                                            Text(
+                                              'augusta@TheEmpire ',
+                                              style: TextStyle(
+                                                  color: darkGrey,
+                                                  fontFamily: 'Rubik-Regular',
+                                                  fontSize: 8.sp),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  });
+                            },
+                            child: Container(
+                              height: height * 0.05,
+                              width: width * 0.3,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  border:
+                                      Border.all(color: lightBlack, width: 1)),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'My QR',
+                                    style: TextStyle(
+                                        fontFamily: 'Roboto',
+                                        fontSize: 10.sp,
+                                        color: lightBlack),
+                                  ),
+                                  SizedBox(
+                                    width: width * 0.02,
+                                  ),
+                                  Icon(
+                                    Icons.qr_code,
+                                    color: lightBlack,
+                                    size: 16.sp,
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                           Container(
@@ -303,12 +366,156 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 fontWeight: FontWeight.w500,
                                 fontFamily: 'Rubik-Regular'),
                           ),
-                          trailing: Padding(
-                            padding: EdgeInsets.only(right: width * 0.08),
-                            child: Icon(
-                              Icons.arrow_forward_ios,
-                              color: grey,
-                              size: 15.sp,
+                          trailing: InkWell(
+                            onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (_) {
+                                    return AlertDialog(
+                                      actionsPadding: EdgeInsets.zero,
+                                      elevation: 4,
+                                      content: Container(
+                                        height: height * 0.4,
+                                        width: width * 0.8,
+                                        alignment: Alignment.topCenter,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            dismisButton,
+                                            const Spacer(flex: 2,),
+                                            Padding(
+                                              padding: const EdgeInsets.only(right: 8),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    'Send',
+                                                    style: TextStyle(
+                                                        color: lightBlack,
+                                                        fontFamily:
+                                                            'Rubik-Regular',
+                                                        fontSize: 14.sp),
+                                                  ),
+                                                  Text(
+                                                    '\$2500 per week',
+                                                    style: TextStyle(
+                                                        color: darkGrey,
+                                                        fontFamily:
+                                                            'Rubik-Regular',
+                                                        fontSize: 14.sp),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            const Spacer(flex: 1,),
+                                            
+                                            const Divider(color:lightBlack,height: 8,),
+                                            const Spacer(flex: 2,),
+                                            Padding(
+                                              padding: const EdgeInsets.only(right: 8),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    'Receive',
+                                                    style: TextStyle(
+                                                        color: lightBlack,
+                                                        fontFamily:
+                                                            'Rubik-Regular',
+                                                        fontSize: 14.sp),
+                                                  ),
+                                                  Text(
+                                                    'Unlimited',
+                                                    style: TextStyle(
+                                                        color: darkGrey,
+                                                        fontFamily:
+                                                            'Rubik-Regular',
+                                                        fontSize: 14.sp),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            const Spacer(flex: 1,),
+                                            const Divider(color:lightBlack,height: 8,),
+                                            const Spacer(flex: 2,),
+                                            Padding(
+                                              padding: const EdgeInsets.only(right: 8),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    'Add Cash',
+                                                    style: TextStyle(
+                                                        color: lightBlack,
+                                                        fontFamily:
+                                                            'Rubik-Regular',
+                                                        fontSize: 14.sp),
+                                                  ),
+                                                  Text(
+                                                    '\$2500 per week',
+                                                    style: TextStyle(
+                                                        color: darkGrey,
+                                                        fontFamily:
+                                                            'Rubik-Regular',
+                                                        fontSize: 14.sp),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            const Spacer(flex: 1,),
+                                            
+                                            const Divider(color:lightBlack,height: 8,),
+                                            const Spacer(flex: 2,),
+                                            Padding(
+                                              padding: const EdgeInsets.only(right: 8),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    'Cash Out',
+                                                    style: TextStyle(
+                                                        color: lightBlack,
+                                                        fontFamily:
+                                                            'Rubik-Regular',
+                                                        fontSize: 14.sp),
+                                                  ),
+                                                  Text(
+                                                    '\$2500 per week',
+                                                    style: TextStyle(
+                                                        color: darkGrey,
+                                                        fontFamily:
+                                                            'Rubik-Regular',
+                                                        fontSize: 14.sp),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            const Spacer(flex: 1,),
+                                            const Divider(color:lightBlack,height: 8,),
+                                            const Spacer(flex: 2,),
+
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  });
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.only(right: width * 0.08),
+                              child: Icon(
+                                Icons.arrow_forward_ios,
+                                color: grey,
+                                size: 15.sp,
+                              ),
                             ),
                           ),
                         ),
@@ -427,55 +634,58 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                       ),
-                      
-                      
                     ],
                   ),
                 ),
               ),
             ),
-            
             Padding(
-              padding:  EdgeInsets.only(left: width*0.1,top: 5.sp,bottom: 10.sp),
+              padding:
+                  EdgeInsets.only(left: width * 0.1, top: 5.sp, bottom: 10.sp),
               child: Row(
-                          children: [
-                            Icon(
-                              Icons.help,
-                              color: grey,
-                              size: 22.sp,
-                            ),
-                            SizedBox(width: width*0.04,),
-                            Text(
-                              'Help & Feedback',
-                              style: TextStyle(
-                                  color: grey,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: 'Rubik-Regular'),
-                            ),
-                          ],
-                        ),
+                children: [
+                  Icon(
+                    Icons.help,
+                    color: grey,
+                    size: 22.sp,
+                  ),
+                  SizedBox(
+                    width: width * 0.04,
+                  ),
+                  Text(
+                    'Help & Feedback',
+                    style: TextStyle(
+                        color: grey,
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Rubik-Regular'),
+                  ),
+                ],
+              ),
             ),
             Padding(
-              padding:  EdgeInsets.only(left: width*0.1,top: 5.sp,bottom: 50.sp),
+              padding:
+                  EdgeInsets.only(left: width * 0.1, top: 5.sp, bottom: 50.sp),
               child: Row(
-                          children: [
-                            Icon(
-                              Icons.receipt,
-                              color: grey,
-                              size: 22.sp,
-                            ),
-                            SizedBox(width: width*0.04,),
-                            Text(
-                              'Terms & Conditions',
-                              style: TextStyle(
-                                  color: grey,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: 'Rubik-Regular'),
-                            ),
-                          ],
-                        ),
+                children: [
+                  Icon(
+                    Icons.receipt,
+                    color: grey,
+                    size: 22.sp,
+                  ),
+                  SizedBox(
+                    width: width * 0.04,
+                  ),
+                  Text(
+                    'Terms & Conditions',
+                    style: TextStyle(
+                        color: grey,
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Rubik-Regular'),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

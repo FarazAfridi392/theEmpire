@@ -1,24 +1,17 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
 import 'package:sizer/sizer.dart';
 import 'package:the_empire/app_properties.dart';
-import 'package:the_empire/screens/complete_message_screen.dart';
-import 'package:the_empire/screens/dashboard/components/dashboard_card.dart';
-
-class AddCashScreen extends StatefulWidget {
-  AddCashScreen({
-    Key? key,
-  }) : super(key: key);
+import 'package:the_empire/screens/money_transfer/components/complete_transfer_message.dart';
+class AddRequestAmount extends StatefulWidget {
+  const AddRequestAmount({ Key? key }) : super(key: key);
 
   @override
-  _AddCashScreenState createState() => _AddCashScreenState();
+  _AddRequestAmountState createState() => _AddRequestAmountState();
 }
 
-class _AddCashScreenState extends State<AddCashScreen> {
+class _AddRequestAmountState extends State<AddRequestAmount> {
   String text = '';
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -30,8 +23,8 @@ class _AddCashScreenState extends State<AddCashScreen> {
           return;
         }
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (_) => CompleteMessageScreen(
-                  text1: 'Amount Added',
+            builder: (_) => CompleteTransferMessage(
+                  text1: 'Amount Requested',
                   text2: text,
                 )));
       },
@@ -39,7 +32,7 @@ class _AddCashScreenState extends State<AddCashScreen> {
         width: MediaQuery.of(context).size.width / 1.5,
         height: height * 0.07,
         child: const Center(
-            child: Text("Add Cash",
+            child: Text("Request",
                 style: TextStyle(
                     color: backgroundColor,
                     fontFamily: 'Rubik',
@@ -87,7 +80,7 @@ class _AddCashScreenState extends State<AddCashScreen> {
                       child: Column(
                         children: [
                           Center(
-                            child: Text('Enter The Amount To Add',
+                            child: Text('Enter The Amount To Request',
                                 maxLines: 2,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -126,8 +119,9 @@ class _AddCashScreenState extends State<AddCashScreen> {
                 Positioned(
                   top: height * .05,
                   
+                  
                   child: Text(
-                    'Cash Add',
+                    'Request Money',
                     style: TextStyle(
                         color: backgroundColor,
                         fontSize: 25.sp,

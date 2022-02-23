@@ -33,7 +33,7 @@ class _MoneyTransferScreenState extends State<MoneyTransferScreen> {
     //             style: TextStyle(
     //                 color: backgroundColor,
     //                 fontFamily: 'Rubik',
-    //                 fontSize: 18.0))),
+    //                 fontSize: 14.sp))),
     //     decoration: BoxDecoration(
     //       borderRadius: BorderRadius.circular(9.0),
     //       color: brown,
@@ -79,12 +79,12 @@ class _MoneyTransferScreenState extends State<MoneyTransferScreen> {
                       child: Container(
                         width: MediaQuery.of(context).size.width / 1.5,
                         height: height * 0.07,
-                        child: const Center(
+                        child:  Center(
                             child: Text("Proceed",
                                 style: TextStyle(
                                     color: backgroundColor,
                                     fontFamily: 'Rubik',
-                                    fontSize: 18.0))),
+                                    fontSize: 14.sp))),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(9.0),
                           color: brown,
@@ -106,12 +106,12 @@ class _MoneyTransferScreenState extends State<MoneyTransferScreen> {
                             child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
+                             Text(
                               "or Scan a QR Code",
                               style: TextStyle(
                                   color: lightBlack,
                                   fontFamily: 'Rubik',
-                                  fontSize: 18.0),
+                                  fontSize: 14.sp),
                             ),
                             SizedBox(
                               width: width * 0.03,

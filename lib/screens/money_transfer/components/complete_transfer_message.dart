@@ -18,7 +18,7 @@ class CompleteTransferMessage extends StatelessWidget {
     Widget finishButton = InkWell(
       onTap: () {
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (_) => MoneyTransferScreen()));
+            MaterialPageRoute(builder: (_) => MainPage(initialRout: 1,)));
       },
       child: Container(
         width: MediaQuery.of(context).size.width / 1.5,

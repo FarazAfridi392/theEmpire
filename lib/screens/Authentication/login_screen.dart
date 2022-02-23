@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import 'package:the_empire/app_properties.dart';
 import 'package:the_empire/custom_appbar.dart';
 import 'package:the_empire/screens/Authentication/components/google_button.dart';
 import 'package:the_empire/screens/Authentication/forgot_password_screen.dart';
 import 'package:the_empire/screens/Authentication/signup_screen.dart';
+import 'package:the_empire/screens/authentication/enter_pin_screen.dart';
 import 'package:the_empire/screens/main/mainPage.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -25,34 +27,30 @@ class _LoginScreenState extends State<LoginScreen> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     Widget loginForm = Container(
-      height: height * 0.22,
+      
       child: Container(
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: TextField(
-                controller: widget.email,
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.email),
-                  hintText: 'Email ID/Phone No.',
-                ),
-                style: const TextStyle(fontSize: 16.0, fontFamily: 'Rubik'),
+            TextField(
+              controller: widget.email,
+              decoration:  InputDecoration(
+                contentPadding: EdgeInsets.only(top: 15.sp,bottom: 15.sp),
+                prefixIcon: Icon(Icons.email,size: 20.sp,),
+                hintText: 'Email ID/Phone No.',
               ),
+              style: TextStyle(fontSize: 12.sp, fontFamily: 'Rubik'),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: TextField(
-                controller: widget.password,
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.lock),
-                  hintText: 'Password.',
-                ),
-                style: const TextStyle(fontSize: 16.0, fontFamily: 'Rubik'),
-                obscureText: true,
+            TextField(
+              controller: widget.password,
+              decoration:  InputDecoration(
+                contentPadding: EdgeInsets.only(top: 15.sp,bottom: 15.sp),
+                prefixIcon: Icon(Icons.lock,size: 20.sp,),
+                hintText: 'Password.',
               ),
+              style: TextStyle(fontSize: 12.sp, fontFamily: 'Rubik'),
+              obscureText: true,
             ),
           ],
         ),
@@ -61,17 +59,17 @@ class _LoginScreenState extends State<LoginScreen> {
     Widget loginButton = InkWell(
       onTap: () {
         Navigator.of(context)
-            .pushReplacement(MaterialPageRoute(builder: (_) => MainPage()));
+            .pushReplacement(MaterialPageRoute(builder: (_) => EnterPinScreen()));
       },
       child: Container(
         width: MediaQuery.of(context).size.width / 1.5,
         height: height * 0.07,
-        child: const Center(
+        child:  Center(
             child: Text("Login",
                 style: TextStyle(
                     color: backgroundColor,
                     fontFamily: 'Rubik',
-                    fontSize: 18.0))),
+                    fontSize: 15.sp))),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(9.0),
           color: brown,
@@ -84,19 +82,19 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (_) => SignUpScreen()));
       },
-      child: const Text.rich(
+      child:  Text.rich(
         TextSpan(
           text: "New to the Empire? ",
           children: [
             TextSpan(
               text: "Register",
               style: TextStyle(
-                  fontFamily: 'Rubik-Meduim', fontSize: 18, color: brown),
+                  fontFamily: 'Rubik-Meduim', fontSize: 13.sp, color: brown),
             ),
           ],
         ),
         style: TextStyle(
-          fontSize: 18,
+          fontSize: 13.sp,
           fontFamily: 'Rubik-Regular',
           color: Colors.black,
         ),
@@ -118,9 +116,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Column(
                           children: [
                             const Spacer(
-                              flex: 4,
+                              flex: 8,
                             ),
                             loginForm,
+                            const Spacer(flex: 2,),
                             loginButton,
                             const Spacer(
                               flex: 1,
@@ -130,33 +129,33 @@ class _LoginScreenState extends State<LoginScreen> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.normal,
                                     fontFamily: 'Rubik-Regular',
-                                    fontSize: 16.0)),
+                                    fontSize: 13.0)),
                             const Spacer(
                               flex: 1,
                             ),
                             GoogleButton(),
                             const Spacer(
-                              flex: 1,
+                              flex: 2,
                             ),
                             InkWell(
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (_) => ForgotPasswordScreen()));
                               },
-                              child: const Text(
+                              child:  Text(
                                 'Forgot Password?',
                                 style: TextStyle(
                                     color: brown,
                                     fontFamily: 'Rubik-Medium',
-                                    fontSize: 18.0),
+                                    fontSize: 12.sp),
                               ),
                             ),
                             const Spacer(
-                              flex: 1,
+                              flex: 2,
                             ),
                             register,
                             const Spacer(
-                              flex: 3,
+                              flex: 5,
                             )
                           ],
                         ),

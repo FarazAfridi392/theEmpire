@@ -1,49 +1,24 @@
 import 'package:flutter/material.dart';
-
 import 'package:sizer/sizer.dart';
 import 'package:the_empire/app_properties.dart';
 import 'package:the_empire/numeric_keybpad.dart';
-import 'package:the_empire/screens/money_transfer/components/complete_transfer_message.dart';
-class AddRequestAmount extends StatefulWidget {
-  const AddRequestAmount({ Key? key }) : super(key: key);
+import 'package:the_empire/screens/complete_message_screen.dart';
+import 'package:the_empire/screens/main/mainPage.dart';
+
+class EnterPinScreen extends StatefulWidget {
+  const EnterPinScreen({Key? key}) : super(key: key);
 
   @override
-  _AddRequestAmountState createState() => _AddRequestAmountState();
+  _EnterPinScreenState createState() => _EnterPinScreenState();
 }
 
-class _AddRequestAmountState extends State<AddRequestAmount> {
+class _EnterPinScreenState extends State<EnterPinScreen> {
   String text = '';
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    Widget addCashButton = InkWell(
-      onTap: () {
-        
-        if(text.length == 0){
-          return;
-        }
-        Navigator.of(context, rootNavigator: true).pushReplacement(MaterialPageRoute(
-            builder: (_) => CompleteTransferMessage(
-                  text1: 'Amount Requested',
-                  text2: text,
-                )));
-      },
-      child: Container(
-        width: MediaQuery.of(context).size.width / 1.5,
-        height: height * 0.07,
-        child: const Center(
-            child: Text("Request",
-                style: TextStyle(
-                    color: backgroundColor,
-                    fontFamily: 'Rubik',
-                    fontSize: 18.0))),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(9.0),
-          color: brown,
-        ),
-      ),
-    );
+
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Column(
@@ -57,7 +32,7 @@ class _AddRequestAmountState extends State<AddRequestAmount> {
                   top: 0,
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * .33,
+                    height: MediaQuery.of(context).size.height * .35,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage('assets/dashboard.png'),
@@ -65,7 +40,7 @@ class _AddRequestAmountState extends State<AddRequestAmount> {
                   ),
                 ),
                 Positioned(
-                  top: height * .12,
+                  top: height * .15,
                   left: 40,
                   right: 40,
                   child: Card(
@@ -75,51 +50,74 @@ class _AddRequestAmountState extends State<AddRequestAmount> {
                         borderRadius: BorderRadius.circular(30)),
                     child: Container(
                       width: width * 0.3,
-                      height: height * .24,
-                      padding: EdgeInsets.symmetric(
-                          vertical: height * 0.05,),
+                      height: height * .28,
+                      padding: EdgeInsets.symmetric(vertical: height * 0.05),
                       child: Column(
                         children: [
                           Center(
-                            child: Text('Enter The Amount',
-                                maxLines: 2,
+                            child: Text('Enter Your The Empire Pin',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: grey,
                                     fontFamily: 'Rubik',
                                     fontSize: 12.sp)),
                           ),
-                          Center(
-                            child: Text('To Request',
-                                maxLines: 2,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: grey,
-                                    fontFamily: 'Rubik',
-                                    fontSize: 12.sp)),
-                          ),
-                          Spacer(
+                          const Spacer(
                             flex: 1,
                           ),
                           Center(
-                            child: Text.rich(TextSpan(
-                                text: "\$ ",
+                            child: Text('augusta@TheEmpire ',
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 12.sp,
-                                  fontFamily: 'Rubik',
-                                  color: Colors.black,
-                                ),
-                                children: [
-                                  TextSpan(
-                                    text: text,
-                                    style: TextStyle(
-                                      fontSize: 25.sp,
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Rubik',
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ])),
+                                    color: grey,
+                                    fontFamily: 'Rubik',
+                                    fontSize: 10.sp)),
+                          ),
+                          Spacer(
+                            flex: 14,
+                          ),
+                          Row(
+                            children: [
+                              const Spacer(
+                                flex: 3,
+                              ),
+                              CircleAvatar(
+                                radius: 10.sp,
+                                backgroundColor:
+                                    text.isNotEmpty ? lightBlack : lightGrey,
+                              ),
+                              const Spacer(
+                                flex: 1,
+                              ),
+                              CircleAvatar(
+                                radius: 10.sp,
+                                backgroundColor: 
+                                        text.length == 2 ||
+                                        text.length == 3 ||
+                                        text.length == 4
+                                    ? lightBlack
+                                    : lightGrey,
+                              ),
+                              const Spacer(
+                                flex: 1,
+                              ),
+                              CircleAvatar(
+                                radius: 10.sp,
+                                backgroundColor:
+                                  text.length == 3 || text.length == 4 ? lightBlack : lightGrey,
+                              ),
+                              const Spacer(
+                                flex: 1,
+                              ),
+                              CircleAvatar(
+                                radius: 10.sp,
+                                backgroundColor:
+                                    text.length == 4 ? lightBlack : lightGrey,
+                              ),
+                              const Spacer(
+                                flex: 3,
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -127,11 +125,9 @@ class _AddRequestAmountState extends State<AddRequestAmount> {
                   ),
                 ),
                 Positioned(
-                  top: height * .05,
-                  
-                  
+                  top: height * .07,
                   child: Text(
-                    'Request Money',
+                    'Enter Pin',
                     style: TextStyle(
                         color: backgroundColor,
                         fontSize: 25.sp,
@@ -146,6 +142,7 @@ class _AddRequestAmountState extends State<AddRequestAmount> {
 
           Expanded(
             child: NumericKeyboard(
+              
               onKeyboardTap: _onKeyboardTap,
               textColor: grey,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -177,21 +174,23 @@ class _AddRequestAmountState extends State<AddRequestAmount> {
             ),
           ),
           SizedBox(
-            height: height * 0.03,
+            height: height * 0.08,
           ),
-
-          Center(child: addCashButton),
-          SizedBox(
-            height: height * 0.03,
-          )
         ],
       ),
     );
   }
 
   _onKeyboardTap(String value) {
-    setState(() {
-      text = text + value;
+    setState(()  {
+      text =  text + value;
+     
     });
+     if (text.length == 4) {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_){
+        return MainPage();
+      }));
+    }
+    
   }
 }

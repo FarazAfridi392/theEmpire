@@ -7,6 +7,10 @@ import 'package:the_empire/screens/payment_method_screen.dart';
 import 'package:the_empire/screens/transaction_history/transaction_history_screen.dart';
 
 class MainPage extends StatefulWidget {
+  int? initialRout;
+
+  MainPage({this.initialRout});
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -22,9 +26,9 @@ class _MyAppState extends State<MainPage>
   @override
   void initState() {
     super.initState();
-    _selectedPage = 0;
+    widget.initialRout == 1 ? _selectedPage = 1 : _selectedPage = 0;
 
-    bottomTabController = TabController(length: 4, vsync: this);
+    bottomTabController = TabController(length: 4,initialIndex: widget.initialRout ?? 0, vsync: this);
   }
 
   @override

@@ -3,6 +3,8 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:the_empire/app_properties.dart';
 import 'package:the_empire/custom_appbar.dart';
+import 'package:the_empire/screens/authentication/login_screen.dart';
+import 'package:the_empire/screens/change_pin_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -383,9 +385,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               MainAxisAlignment.start,
                                           children: [
                                             dismisButton,
-                                            const Spacer(flex: 2,),
+                                            const Spacer(
+                                              flex: 2,
+                                            ),
                                             Padding(
-                                              padding: const EdgeInsets.only(right: 8),
+                                              padding: const EdgeInsets.only(
+                                                  right: 8),
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
@@ -410,12 +415,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 ],
                                               ),
                                             ),
-                                            const Spacer(flex: 1,),
-                                            
-                                            const Divider(color:lightBlack,height: 8,),
-                                            const Spacer(flex: 2,),
+                                            const Spacer(
+                                              flex: 1,
+                                            ),
+                                            const Divider(
+                                              color: lightBlack,
+                                              height: 8,
+                                            ),
+                                            const Spacer(
+                                              flex: 2,
+                                            ),
                                             Padding(
-                                              padding: const EdgeInsets.only(right: 8),
+                                              padding: const EdgeInsets.only(
+                                                  right: 8),
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
@@ -440,11 +452,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 ],
                                               ),
                                             ),
-                                            const Spacer(flex: 1,),
-                                            const Divider(color:lightBlack,height: 8,),
-                                            const Spacer(flex: 2,),
+                                            const Spacer(
+                                              flex: 1,
+                                            ),
+                                            const Divider(
+                                              color: lightBlack,
+                                              height: 8,
+                                            ),
+                                            const Spacer(
+                                              flex: 2,
+                                            ),
                                             Padding(
-                                              padding: const EdgeInsets.only(right: 8),
+                                              padding: const EdgeInsets.only(
+                                                  right: 8),
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
@@ -469,12 +489,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 ],
                                               ),
                                             ),
-                                            const Spacer(flex: 1,),
-                                            
-                                            const Divider(color:lightBlack,height: 8,),
-                                            const Spacer(flex: 2,),
+                                            const Spacer(
+                                              flex: 1,
+                                            ),
+                                            const Divider(
+                                              color: lightBlack,
+                                              height: 8,
+                                            ),
+                                            const Spacer(
+                                              flex: 2,
+                                            ),
                                             Padding(
-                                              padding: const EdgeInsets.only(right: 8),
+                                              padding: const EdgeInsets.only(
+                                                  right: 8),
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
@@ -499,10 +526,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 ],
                                               ),
                                             ),
-                                            const Spacer(flex: 1,),
-                                            const Divider(color:lightBlack,height: 8,),
-                                            const Spacer(flex: 2,),
-
+                                            const Spacer(
+                                              flex: 1,
+                                            ),
+                                            const Divider(
+                                              color: lightBlack,
+                                              height: 8,
+                                            ),
+                                            const Spacer(
+                                              flex: 2,
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -577,60 +610,76 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                       Expanded(
-                        child: ListTile(
-                          contentPadding: EdgeInsets.zero,
-                          minLeadingWidth: width * 0.05,
-                          leading: Padding(
-                            padding: EdgeInsets.only(top: 4.5.sp),
-                            child: Icon(
-                              Icons.security,
-                              color: grey,
-                              size: 22.sp,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context, rootNavigator: true)
+                                .push(MaterialPageRoute(builder: (_) {
+                              return ChangePinScreen();
+                            }));
+                          },
+                          child: ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            minLeadingWidth: width * 0.05,
+                            leading: Padding(
+                              padding: EdgeInsets.only(top: 4.5.sp),
+                              child: Icon(
+                                Icons.security,
+                                color: grey,
+                                size: 22.sp,
+                              ),
                             ),
-                          ),
-                          title: Text(
-                            'Security PIN',
-                            style: TextStyle(
-                                color: grey,
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Rubik-Regular'),
-                          ),
-                          subtitle: Text(
-                            'Change Security PIN',
-                            style: TextStyle(
-                                color: grey,
-                                fontSize: 12.sp,
-                                fontFamily: 'Rubik-Regular'),
+                            title: Text(
+                              'Security PIN',
+                              style: TextStyle(
+                                  color: grey,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'Rubik-Regular'),
+                            ),
+                            subtitle: Text(
+                              'Change Security PIN',
+                              style: TextStyle(
+                                  color: grey,
+                                  fontSize: 12.sp,
+                                  fontFamily: 'Rubik-Regular'),
+                            ),
                           ),
                         ),
                       ),
                       Expanded(
-                        child: ListTile(
-                          contentPadding: EdgeInsets.zero,
-                          minLeadingWidth: width * 0.05,
-                          leading: Padding(
-                            padding: EdgeInsets.only(top: 4.5.sp),
-                            child: Icon(
-                              Icons.logout,
-                              color: grey,
-                              size: 22.sp,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context, rootNavigator: true)
+                                .pushReplacement(MaterialPageRoute(builder: (_) {
+                              return LoginScreen();
+                            }));
+                          },
+                          child: ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            minLeadingWidth: width * 0.05,
+                            leading: Padding(
+                              padding: EdgeInsets.only(top: 4.5.sp),
+                              child: Icon(
+                                Icons.logout,
+                                color: grey,
+                                size: 22.sp,
+                              ),
                             ),
-                          ),
-                          title: Text(
-                            'Logout',
-                            style: TextStyle(
-                                color: grey,
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Rubik-Regular'),
-                          ),
-                          subtitle: Text(
-                            'Logout from the Empire',
-                            style: TextStyle(
-                                color: grey,
-                                fontSize: 12.sp,
-                                fontFamily: 'Rubik-Regular'),
+                            title: Text(
+                              'Logout',
+                              style: TextStyle(
+                                  color: grey,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'Rubik-Regular'),
+                            ),
+                            subtitle: Text(
+                              'Logout from the Empire',
+                              style: TextStyle(
+                                  color: grey,
+                                  fontSize: 12.sp,
+                                  fontFamily: 'Rubik-Regular'),
+                            ),
                           ),
                         ),
                       ),

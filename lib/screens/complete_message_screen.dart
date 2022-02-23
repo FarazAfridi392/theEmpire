@@ -17,7 +17,7 @@ class CompleteMessageScreen extends StatelessWidget {
     Widget finishButton = InkWell(
       onTap: () {
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (_) => DashboardScreen()));
+            MaterialPageRoute(builder: (_) => MainPage()));
       },
       child: Container(
         width: MediaQuery.of(context).size.width / 1.5,

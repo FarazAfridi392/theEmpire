@@ -1,9 +1,10 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:numeric_keyboard/numeric_keyboard.dart';
+
 import 'package:sizer/sizer.dart';
 import 'package:the_empire/app_properties.dart';
+import 'package:the_empire/numeric_keybpad.dart';
 import 'package:the_empire/screens/complete_message_screen.dart';
 import 'package:the_empire/screens/dashboard/components/dashboard_card.dart';
 
@@ -29,7 +30,7 @@ class _AddCashScreenState extends State<AddCashScreen> {
         if(text.length == 0){
           return;
         }
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
+        Navigator.of(context, rootNavigator: true).pushReplacement(MaterialPageRoute(
             builder: (_) => CompleteMessageScreen(
                   text1: 'Amount Added',
                   text2: text,
@@ -83,11 +84,20 @@ class _AddCashScreenState extends State<AddCashScreen> {
                       width: width * 0.3,
                       height: height * .24,
                       padding: EdgeInsets.symmetric(
-                          vertical: height * 0.05, horizontal: width * 0.2),
+                          vertical: height * 0.05,),
                       child: Column(
                         children: [
                           Center(
-                            child: Text('Enter The Amount To Add',
+                            child: Text('Enter The Amount',
+                                maxLines: 2,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: grey,
+                                    fontFamily: 'Rubik',
+                                    fontSize: 12.sp)),
+                          ),
+                          Center(
+                            child: Text('To Add',
                                 maxLines: 2,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -140,34 +150,36 @@ class _AddCashScreenState extends State<AddCashScreen> {
           ),
           // Center(child: Text(text)),
 
-          NumericKeyboard(
-            onKeyboardTap: _onKeyboardTap,
-            textColor: grey,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            rightButtonFn: () {
-              if (text.contains('.') || text.length == 0) {
-                return;
-              }
-              setState(() {
-                text = text + '.';
-              });
-            },
-            rightIcon: Icon(
-              Icons.circle,
-              color: grey,
-              size: 4.sp,
-            ),
-            leftButtonFn: () {
-              setState(() {
-                if (text.length == 0) {
+          Expanded(
+            child: NumericKeyboard(
+              onKeyboardTap: _onKeyboardTap,
+              textColor: grey,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              rightButtonFn: () {
+                if (text.contains('.') || text.length == 0) {
                   return;
                 }
-                text = text.substring(0, text.length - 1);
-              });
-            },
-            leftIcon: const Icon(
-              Icons.backspace,
-              color: grey,
+                setState(() {
+                  text = text + '.';
+                });
+              },
+              rightIcon: Icon(
+                Icons.circle,
+                color: grey,
+                size: 4.sp,
+              ),
+              leftButtonFn: () {
+                setState(() {
+                  if (text.length == 0) {
+                    return;
+                  }
+                  text = text.substring(0, text.length - 1);
+                });
+              },
+              leftIcon: const Icon(
+                Icons.backspace,
+                color: grey,
+              ),
             ),
           ),
           SizedBox(

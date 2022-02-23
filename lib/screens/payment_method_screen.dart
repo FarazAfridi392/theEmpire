@@ -28,12 +28,12 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
       child: Container(
         width: MediaQuery.of(context).size.width / 1.5,
         height: height * 0.07,
-        child: const Center(
+        child:  Center(
             child: Text("Update Payment Method",
                 style: TextStyle(
                     color: backgroundColor,
                     fontFamily: 'Rubik',
-                    fontSize: 18.0))),
+                    fontSize: 14.sp))),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(9.0),
           color: brown,

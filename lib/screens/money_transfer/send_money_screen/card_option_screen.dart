@@ -51,8 +51,8 @@ class _CardOptionScreenState extends State<CardOptionScreen> {
                           width: width * 0.1),
                       hintText: 'Receiver Card Details',
                     ),
-                    style: const TextStyle(
-                        fontSize: 16.0, fontFamily: 'Rubik', color: grey),
+                    style:  TextStyle(
+                        fontSize: 12.sp, fontFamily: 'Rubik', color: grey),
                   ),
                   // Text(
                   //   'Card Transfer',
@@ -76,10 +76,10 @@ class _CardOptionScreenState extends State<CardOptionScreen> {
                   padding: EdgeInsets.only(top: height * 0.03),
                   child: Column(
                     children: [
-                      const Text(
+                       Text(
                         'Enter Amount',
                         style: TextStyle(
-                            fontSize: 16.0, fontFamily: 'Rubik', color: grey),
+                            fontSize: 12.sp, fontFamily: 'Rubik', color: grey),
                       ),
                       SizedBox(
                         height: height * 0.01,
@@ -110,7 +110,7 @@ class _CardOptionScreenState extends State<CardOptionScreen> {
                   if(amount.text.length == 0){
                     return;
                   }
-                  Navigator.of(context).pushReplacement(
+                  Navigator.of(context, rootNavigator: true).pushReplacement(
                     MaterialPageRoute(
                       builder: (_) => CompleteTransferMessage(
                         text1: "Amount Sent",
@@ -122,12 +122,12 @@ class _CardOptionScreenState extends State<CardOptionScreen> {
                 child: Container(
                   width: MediaQuery.of(context).size.width / 1.5,
                   height: height * 0.07,
-                  child: const Center(
+                  child:  Center(
                       child: Text("Proceed",
                           style: TextStyle(
                               color: backgroundColor,
                               fontFamily: 'Rubik',
-                              fontSize: 18.0))),
+                              fontSize: 14.sp))),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(9.0),
                     color: brown,

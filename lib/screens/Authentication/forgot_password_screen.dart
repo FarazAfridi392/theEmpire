@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import 'package:the_empire/app_properties.dart';
 import 'package:the_empire/custom_appbar.dart';
 import 'package:the_empire/screens/Authentication/login_screen.dart';
@@ -19,21 +20,17 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     double width = MediaQuery.of(context).size.width;
     
     Widget forgetPassForm = Container(
-      height: height * 0.12,
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 8.0),
-          child: TextField(
-            controller: email,
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.email),
-              hintText: 'Email ID/Phone No.',
+      
+      child: TextField(
+              controller: email,
+              decoration:  InputDecoration(
+                contentPadding: EdgeInsets.only(top: 15.sp,bottom: 15.sp),
+                prefixIcon: Icon(Icons.email,size: 20.sp,),
+                hintText: 'Email ID/Phone No.',
+              ),
+              style: TextStyle(fontSize: 12.sp, fontFamily: 'Rubik'),
             ),
-            style: const TextStyle(fontSize: 16.0, fontFamily: 'Rubik'),
-          ),
-        ),
-      ),
+            
     );
     Widget forgetButton = InkWell(
       onTap: () {
@@ -43,12 +40,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       child: Container(
         width: MediaQuery.of(context).size.width / 1.5,
         height: height * 0.07,
-        child: const Center(
+        child:  Center(
             child: Text("Send New Password",
                 style: TextStyle(
                     color: backgroundColor,
                     fontFamily: 'Rubik',
-                    fontSize: 18.0))),
+                    fontSize: 14.sp))),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(9.0),
           color: brown,
@@ -71,12 +68,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 child: Column(
                   children: [
                     const Spacer(
-                      flex: 4,
+                      flex: 6,
                     ),
                     forgetPassForm,
+                    const Spacer(flex: 1,),
                     forgetButton,
                     const Spacer(
-                      flex: 5,
+                      flex: 8,
                     )
                   ],
                 ),

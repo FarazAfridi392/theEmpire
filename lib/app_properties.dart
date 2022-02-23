@@ -17,6 +17,7 @@ const Color darkpurple = Color(0xff480F6D);
 const Color purple = Color.fromARGB(100, 72, 15, 109);
 const Color lightOrange = Color.fromARGB(33, 242, 156, 71);
 const Color grey = Color(0xff787786);
+const Color lightGrey = Color(0xff979797);
 
 
 const Color  transparentWhite = Color(0xffFFFFFF);

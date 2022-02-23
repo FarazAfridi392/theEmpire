@@ -52,27 +52,30 @@ class _BankOptionScreenState extends State<BankOptionScreen> {
                       SizedBox(
                         width: width * 0.04,
                       ),
-                      const Text(
+                       Text(
                         'Select Bank',
                         style:  TextStyle(
-                        fontSize: 16.0, fontFamily: 'Rubik', color: grey),
+                        fontSize: 12.sp, fontFamily: 'Rubik', color: grey),
                       ),
-                      SizedBox(width: width*0.241,),
-                      DropdownButton<String>(
-                        dropdownColor: Colors.white,
-                        underline: SizedBox(),
-                        icon: Icon(
-                          Icons.keyboard_arrow_down,
-                          size: 18.sp,
-                          color: grey,
+                      const Spacer(flex: 1,),
+                      Padding(
+                        padding: EdgeInsets.only(right: width*0.05),
+                        child: DropdownButton<String>(
+                          dropdownColor: Colors.white,
+                          underline: SizedBox(),
+                          icon: Icon(
+                            Icons.keyboard_arrow_down,
+                            size: 18.sp,
+                            color: grey,
+                          ),
+                          items: <String>['A', 'B', 'C', 'D'].map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          onChanged: (_) {},
                         ),
-                        items: <String>['A', 'B', 'C', 'D'].map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        onChanged: (_) {},
                       ),
                     ],
                   ),
@@ -98,8 +101,8 @@ class _BankOptionScreenState extends State<BankOptionScreen> {
                           size: 26.sp,
                         ),
                         hintText: 'Receiver Bank Account'),
-                    style: const TextStyle(
-                        fontSize: 16.0, fontFamily: 'Rubik', color: grey),
+                    style:  TextStyle(
+                        fontSize: 12.sp, fontFamily: 'Rubik', color: grey),
                   ),
                   // Text(
                   //   'Card Transfer',
@@ -123,10 +126,10 @@ class _BankOptionScreenState extends State<BankOptionScreen> {
                   padding: EdgeInsets.only(top: height * 0.03),
                   child: Column(
                     children: [
-                      const Text(
+                       Text(
                         'Enter Amount',
                         style: TextStyle(
-                            fontSize: 16.0, fontFamily: 'Rubik', color: grey),
+                            fontSize: 12.sp, fontFamily: 'Rubik', color: grey),
                       ),
                       SizedBox(
                         height: height * 0.01,
@@ -157,7 +160,7 @@ class _BankOptionScreenState extends State<BankOptionScreen> {
                   if (amount.text.length == 0) {
                     return;
                   }
-                  Navigator.of(context).pushReplacement(
+                  Navigator.of(context, rootNavigator: true).pushReplacement(
                     MaterialPageRoute(
                       builder: (_) => CompleteTransferMessage(
                         text1: "Amount Sent",
@@ -169,12 +172,12 @@ class _BankOptionScreenState extends State<BankOptionScreen> {
                 child: Container(
                   width: MediaQuery.of(context).size.width / 1.5,
                   height: height * 0.07,
-                  child: const Center(
+                  child:  Center(
                       child: Text("Proceed",
                           style: TextStyle(
                               color: backgroundColor,
                               fontFamily: 'Rubik',
-                              fontSize: 18.0))),
+                              fontSize: 14.sp))),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(9.0),
                     color: brown,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import 'package:the_empire/app_properties.dart';
 
 import 'package:the_empire/screens/main/mainPage.dart';
@@ -27,9 +28,9 @@ class GoogleButton extends StatelessWidget {
             SizedBox(
               width: width * 0.03,
             ),
-            const Text("Google",
+             Text("Google",
                 style: TextStyle(
-                    color: darkGrey, fontFamily: 'Rubik', fontSize: 18.0))
+                    color: darkGrey, fontFamily: 'Rubik', fontSize: 14.sp))
           ],
         )),
         decoration: BoxDecoration(
